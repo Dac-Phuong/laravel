@@ -1,0 +1,478 @@
+    p {
+        margin: 0 !important;
+    }
+
+    a {
+        text-decoration: none
+    }
+
+    tr {
+        text-align: center;
+    }
+
+    body {
+        font-family: tahoma;
+    }
+
+    h5 {
+        font-size: 14px;
+    }
+
+    svg.w-5.h-5 {
+        width: 20px;
+    }
+
+    .flex.justify-between.flex-1.sm\:hidden,
+    p.text-sm.text-gray-700.leading-5 {
+        display: none;
+    }
+
+    .hidden.sm\:flex-1.sm\:flex.sm\:items-center.sm\:justify-between {
+        margin-top: 20px;
+    }
+
+    .carousel-item img {
+        width: 100%;
+        height: 450px !important;
+    }
+
+    .card-img-h3 {
+        font-size: 16px;
+        padding: 5px 0;
+        color: #555252;
+    }
+
+    .card-img {
+        height: 240px !important;
+    }
+
+    .card-img img {
+        height: 100%;
+        transition: 0.8s
+    }
+
+    .card-img img:hover {
+        -webkit-transform: scale(1.07);
+        transform: scale(1.07);
+    }
+
+    button.carousel-control-next,
+    button.carousel-control-prev {
+        display: none;
+    }
+
+    .product-view-name h1 {
+        font-family: Arial;
+        color: #252525;
+        font-size: 24px;
+        line-height: normal;
+        text-transform: uppercase;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+    }
+
+    .card-sale {
+        height: 25px;
+        width: 40px;
+        background: #46A748;
+        text-align: center;
+        color: #fff;
+        margin-left: 20px;
+        border-radius: 10px
+    }
+
+    .product-status {
+        font-size: 14px;
+        color: #252525;
+        font-family: Arial;
+        line-height: 22px;
+        margin-bottom: 10px;
+    }
+
+    .fk-boxs {
+        margin-bottom: 15px;
+        margin-top: 15px;
+        border: 1px dashed #d7d7d7;
+    }
+
+    .fk-tit {
+        padding: 4px 10px;
+        font-weight: bold;
+        color: #fff;
+        background: #286CD9;
+        border-bottom: 1px dashed #d7d7d7;
+    }
+
+    .fk-main {
+        padding: 15px 15px 5px 15px;
+    }
+
+    .fk-sales ul {
+        list-style: none;
+    }
+
+    .fk-sales ul>li {
+        position: relative;
+        font-size: 13px;
+        color: #000;
+    }
+
+    .owl-nav,
+    .owl-dots {
+        display: none;
+    }
+
+    .btn-logout:hover {
+        background: #74a2f8;
+        transition: .5s
+    }
+
+    .cart-info {
+        margin: 50px;
+        color: #000;
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .table-list-product {
+        margin-top: 20px;
+        border: 1px solid #dcdcdc;
+    }
+
+    /* ---------------------------------------------------checkout---------------------------------------------------------------------- */
+
+    .col-login-checkout>p {
+        display: block;
+        width: 100%;
+        height: 40px;
+        margin: 0;
+        line-height: 39px;
+        text-align: left !important;
+        font-size: 18px;
+        color: #333;
+        font-weight: 600;
+        border-bottom: 1px solid #dcdcdc;
+    }
+
+    /* ---------------------------------------------------nav---------------------------------------------------------------------- */
+
+    .navbar-light .navbar-nav .nav-link {
+        color: #fff !important;
+        padding: 5px 15px;
+        font-size: 17px;
+    }
+
+    ul.navbar-nav {
+        height: 50px;
+        line-height: 40px;
+    }
+
+    li.nav-item:hover {
+        background: #6395f0;
+        transition: 0.5s
+    }
+
+    /* ---------------------------------------------------login---------------------------------------------------------------------- */
+    .form-login h2 {
+        font-size: 23px;
+        line-height: 44px;
+        font-weight: 400;
+        color: #685e52;
+        text-transform: uppercase;
+    }
+
+    .form-label {
+        display: inline-block;
+        font-size: 0.8em;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: #685e52;
+        margin-bottom: 5px;
+        cursor: pointer;
+        text-transform: uppercase;
+    }
+
+    .form-link {
+        text-decoration: none !important;
+        color: blue;
+        font-size: 0.9em;
+        line-height: 38px;
+        padding-left: 5px;
+    }
+
+    /* ---------------------------------------------------PAGE products---------------------------------------------------------------------- */
+    .sidebar__sale p,
+    .product_sale_title {
+        background: #286CD9;
+        height: 40px;
+        margin: 0;
+        color: #fff;
+        font-size: 1em;
+        line-height: 40px;
+        padding-left: 24px;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    .list-group-item {
+        border: none;
+        padding: 0;
+    }
+
+    .list-group-item:hover {
+        background: #286CD9;
+        color: #fff;
+        transition: 0.5s
+    }
+
+    .list-group-item a:hover {
+        color: #fff !important;
+        transition: 0.5s
+    }
+
+    .lt-product-group-info h3 {
+        font-size: 12px;
+        color: #393d3f;
+        font-weight: 700;
+        height: auto;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .price-box {
+        margin: 5px 0;
+        display: flex;
+    }
+
+    .price-box p,
+    .price-box del {
+        font-size: 14px;
+        padding-bottom: 10px;
+    }
+
+    .price-sale {
+        font-size: 13px;
+        padding-bottom: 10px;
+        color: #e11b1e;
+        font-weight: 600;
+    }
+
+    .box-sale {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        padding: 1px 6px 1px 6px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: bold;
+        color: #fff;
+        background: #e11b1e;
+        border: solid 1px #e11b1e;
+        border-radius: 100px;
+        line-height: 15px;
+    }
+
+    .box-sale span {
+        position: relative;
+        top: 10px;
+        left: -2px;
+        font-size: 11px;
+    }
+
+    .collection__title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #252525;
+        display: inline-block;
+        text-transform: uppercase;
+        line-height: normal;
+        padding: 14px 0px;
+        border-bottom: 3px solid #286CD9;
+        margin-bottom: -2px;
+        position: relative;
+        margin: 0px;
+    }
+
+    .product-img:hover {
+        transition: 0.3s;
+        margin: -8px auto 24px;
+    }
+
+    .list-product {
+        margin-top: 0 !important;
+        margin-bottom: 20px;
+        width: 100%;
+        display: block;
+        clear: both;
+        overflow: hidden;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .list-product a {
+        float: left;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        line-height: 40px;
+        color: #000;
+        text-decoration: none
+    }
+
+    .sectin-title {
+        text-align: center;
+        color: #000;
+        font-size: 30px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        position: relative;
+    }
+
+    .sectin-title::before {
+        position: absolute;
+        content: '';
+        bottom: -10px;
+        right: 44%;
+        width: 131px;
+        border: 2px solid rgba(119, 208, 228, 0.96);
+    }
+
+    .description_icon {
+        text-align: left;
+        display: inline-block;
+        vertical-align: middle;
+        width: 100%;
+    }
+
+    span.large-text {
+        font-size: 16px;
+        color: #000;
+        text-transform: uppercase;
+        font-weight: 700;
+        display: block;
+        margin: 10px 0 0px;
+    }
+
+    .service_item {
+        -moz-box-shadow: 0px 1px 5px 2px #f1f1f1;
+        -webkit-box-shadow: 0px 1px 5px 2px #f1f1f1;
+        box-shadow: 0px 1px 5px 2px #f1f1f1;
+        text-align: center;
+        padding: 40px;
+        width: 97%;
+        text-align: center;
+        border-radius: 8px;
+        width: calc(33.33% - 10px);
+    }
+
+    .row {
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .btn-update-order {
+        display: block;
+        width: 100%;
+        height: 40px;
+        background: #ececec;
+        border: none;
+        color: #666;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+
+    .list-unstyled {
+        padding-left: 0;
+        list-style: none;
+    }
+
+    /* ---------------------------------------------------main---------------------------------------------------------------------- */
+    .sale-title span {
+        color: white;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 40px;
+    }
+
+    .sale-title {
+        text-align: center;
+        background: #286CD9;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 40px;
+    }
+
+    /* ---------------------------------------------------footer---------------------------------------------------------------------- */
+    #footer {
+        margin-top: 20px;
+        background-color: #286CD9;
+    }
+
+    #footer .top-footer {
+        padding: 50px 0;
+        color: #000;
+    }
+
+    .f-contact,
+    #footer a {
+        color: #fff;
+        text-decoration: none
+    }
+
+    #footer .top-footer h3 {
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 25px;
+        text-transform: uppercase;
+        color: #fff;
+    }
+
+    .list-unstyled {
+        padding-left: 0;
+        list-style: none;
+        padding-right: 25px;
+    }
+
+    #footer .top-footer .f-contact li {
+        margin-bottom: 10px;
+        display: flex;
+    }
+
+    #footer .top-footer .f-contact span {
+        display: block;
+        margin-left: 10px;
+    }
+
+    .social-list-icon {
+        align-items: center;
+        border-radius: 20px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        height: 40px;
+        margin-right: 5px;
+        margin-top: 5px;
+        transition: .5s;
+        width: 40px;
+    }
+
+    .social-icon {
+        color: #fff;
+        margin: auto;
+    }
+
+    .social-list-icon:hover {
+        background: #74a2f8 !important;
+        transition: .5s
+    }
