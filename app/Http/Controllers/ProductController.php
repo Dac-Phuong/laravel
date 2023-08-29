@@ -106,7 +106,7 @@ class ProductController extends Controller
         }
         $request->merge(['image' => $file_name]);
         $data = $request->all();
-        $products = Products::find($id);
+        $products = Products::findOrFail($id);
         $products->update($data);
         return redirect()->route('listProduct')->with('success', 'Sửa phẩm thành công');
     }
@@ -119,7 +119,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Products::find($id);
+        $product = Products::findOrFail($id);
         if ($product) {
             $product->delete();
             return redirect()->route('listProduct')->with('success', 'xóa sản phẩm thành công!');

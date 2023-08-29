@@ -24,7 +24,16 @@ class LoginPageController extends Controller
             ->orderBy('sale', 'desc')
             ->take(5)
             ->get();
-        return view('frontEnd.auth.login', compact('categories', 'products', 'posts', 'banner', 'products_sale'));
+
+        $topProducts = DB::table('order_details')
+            ->select('products_id', DB::raw('SUM(quantity) as total_ordered'))
+            ->groupBy('products_id')
+            ->orderByDesc('total_ordered')
+            ->limit(5)
+            ->get();
+        $productIds = $topProducts->pluck('products_id');
+        $selling_product = Products::whereIn('id', $productIds)->get();
+        return view('frontEnd.auth.login', compact('categories', 'products', 'posts', 'banner', 'products_sale', 'selling_product'));
     }
     public function login(Request $request)
     {

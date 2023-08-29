@@ -27,7 +27,7 @@ class OrderPageController extends Controller
                 'provinces_id' => $request->provinces_id,
                 'districts_id' => $request->districts_id,
                 'user_id' => $user_id,
-                'status' => 'pending',
+                'status' => '0',
             ];
             $order = Order::create($data);
             $cart = session()->get('cart');
@@ -39,7 +39,7 @@ class OrderPageController extends Controller
                     'products_id' => $id,
                     'quantity' => $product['quantity'],
                     'price' => $product['price'],
-                    'status' => 'pending',
+                    'status' => '0',
                 ]);
                 $order->order_detail()->save($order_details);
                 $totalPrice += ($product['quantity'] * $product['price'] + $ship);
@@ -63,6 +63,16 @@ class OrderPageController extends Controller
         $orders = Order::find($id);
         $orders_detail = OrderDetail::all();
         $products = Products::latest()->paginate(10);
-        return view('frontEnd.page.orders_Detail', compact('orders', 'orders_detail', 'categories', 'posts', 'banner', 'products_sale', 'products'));
+
+
+        $topProducts = DB::table('order_details')
+            ->select('products_id', DB::raw('SUM(quantity) as total_ordered'))
+            ->groupBy('products_id')
+            ->orderByDesc('total_ordered')
+            ->limit(5)
+            ->get();
+        $productIds = $topProducts->pluck('products_id');
+        $selling_product = Products::whereIn('id', $productIds)->get();
+        return view('frontEnd.page.orders_Detail', compact('orders', 'orders_detail', 'categories', 'posts', 'banner', 'products_sale', 'products', 'selling_product'));
     }
 }

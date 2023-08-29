@@ -30,7 +30,7 @@
                     <div class="table-order">
                         <table style="padding-right: 10px; width: 100%;">
                             <thead style="border: 1px solid silver;">
-                                <tr>
+                                <tr style="text-align: center">
                                     <th class="text-left" style=" padding:5px 10px">Đơn hàng</th>
                                     <th style=" padding:5px 10px">Ngày</th>
                                     <th style="text-align: center; padding:5px 10px">
@@ -43,16 +43,31 @@
                             <tbody style="border: 1px solid silver;">
                                 @foreach ($orders as $key => $item)
                                     @if ($item->user_id == Auth::user()->id)
-                                        <tr style="border-bottom: 1px solid silver;">
+                                        <tr style="border-bottom: 1px solid silver;text-align: center">
                                             <td style="padding:5px 10px;">{{ ++$key }}</td>
                                             <td style="padding:5px 10px;">{{ $item->created_at }}</td>
                                             <td style="text-align: center; padding:5px 10px;"><span
                                                     class="price-2">{{ number_format($item->total_price) }}đ</span></td>
-                                            <td style="padding:5px 10px; text-align: center;">
-                                                {{ $item->status }} </td>
-                                            <td>
-                                                <span > <a style="color: #fff; margin: 5px 0;" class="btn btn-primary" href="{{route('ordersDetail',$item->id)}}">Xem chi tiết</a></span>
-                                                <span > <a style="color: #fff; margin: 5px 0;" class="btn btn-danger" href="{{route('ordersDetail',$item->id)}}">Hủy đơn</a></span>
+                                            @if ($item->status == 0)
+                                                <td style="padding:5px 10px; text-align: center;">Đang chờ duyệt</td>
+                                            @elseif($item->status == 1)
+                                                <td style="padding:5px 10px; text-align: center;">Đang giao hàng</td>
+                                            @else
+                                                <td style="padding:5px 10px; text-align: center;">Đơn hàng đã được giao</td>
+                                            @endif
+                                            <td class="d-flex">
+                                                <span> <a style="color: #fff;" class="btn btn-primary my-1"
+                                                        href="{{ route('ordersDetail', $item->id) }}">Xem chi
+                                                        tiết</a></span>
+                                                @if ($item->status == 0 || $item->status == 1)
+                                                    <form class="m-1" action="{{ route('delete_order', $item->id) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button onclick="return confirm('Bạn có chắc chắn muốn hủy?')"
+                                                            type="submit" class="btn btn-danger">Hủy đơn</button>
+                                                    </form>
+                                                @endif
                                             </td>
                                     @endif
                                     </tr>

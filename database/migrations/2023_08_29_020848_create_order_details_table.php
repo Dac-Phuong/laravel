@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('status');
             $table->boolean('trash')->default(1);
             $table->timestamps();
-
+            // key
             $table->foreign('orders_id')->references('id')->on('orders')->onDelete('cascade');
             $table->foreign('products_id')->references('id')->on('products')->onDelete('cascade');
         });

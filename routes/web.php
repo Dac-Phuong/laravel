@@ -55,6 +55,7 @@ Route::group(['prefix' => 'cart'], function () {
     Route::get('/checkout', [CheckoutPageController::class, 'checkoutPage'])->name('checkoutPage');
     Route::post('/order', [OrderPageController::class, 'createOrder'])->name('createOrder');
     Route::get('/order/detail/{id}', [OrderPageController::class, 'orders_detail'])->name('ordersDetail');
+    Route::delete('delete/{id}', [OrderController::class, 'destroy'])->name('delete_order');
 });
 
 Route::group(['prefix' => 'posts'], function () {
@@ -74,7 +75,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::group(['middleware' => 'adminLogin'], function () {
         Route::get('/users', [UserController::class, 'index'])->name('getListUser');
         Route::get('/info/{id}', [UserController::class, 'edit'])->name('infoUser');
-        Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('deleteUser');
+        Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('delete_User');
         // products
         Route::group(['prefix' => 'products'], function () {
             Route::get('/list', [ProductController::class, 'index'])->name('listProduct');
@@ -120,6 +121,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('order', [OrderController::class, 'index'])->name('order');
         Route::get('order/detail/{id}', [OrderController::class, 'order_Detail'])->name('order_Detail');
         Route::delete('delete/{id}', [OrderController::class, 'destroy'])->name('delete_item');
+        Route::put('edit/{id}', [OrderController::class, 'update'])->name('update_status');
     });
     Route::post('/logout', [AuthController::class, 'logout'])->name('admin.logout');
 });

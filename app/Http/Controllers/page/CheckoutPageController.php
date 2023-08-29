@@ -27,6 +27,15 @@ class CheckoutPageController extends Controller
             ->orderBy('sale', 'desc')
             ->take(5)
             ->get();
-        return view('frontEnd.page.checkout', compact('categories', 'products', 'posts', 'banner', 'products_sale', 'province', 'district'));
+
+        $topProducts = DB::table('order_details')
+            ->select('products_id', DB::raw('SUM(quantity) as total_ordered'))
+            ->groupBy('products_id')
+            ->orderByDesc('total_ordered')
+            ->limit(5)
+            ->get();
+        $productIds = $topProducts->pluck('products_id');
+        $selling_product = Products::whereIn('id', $productIds)->get();
+        return view('frontEnd.page.checkout', compact('categories', 'products', 'posts', 'banner', 'products_sale', 'province', 'district', 'selling_product'));
     }
 }

@@ -52,7 +52,7 @@
             </div>
             <div class="d-flex flex-wrap " style="border: 1px solid #286CD9 ">
                 <div class="owl-carousel owl-theme">
-                    @foreach ($products as $key => $item)
+                    @foreach ($selling_product as $key => $item)
                         @if ($item->sale > 0)
                             <div class="item">
                                 <div class=" " style="height: 290px; position: relative;border-left: none !important">
@@ -104,7 +104,8 @@
                             <div class="p-2 lt-product-group-info">
                                 <h3 class="">{{ $item->name }}</h3>
                                 <div class="price-box">
-                                    <p class="price-sale">{{ number_format($item->price - ($item->sale / 100) * $item->price) }}đ
+                                    <p class="price-sale">
+                                        {{ number_format($item->price - ($item->sale / 100) * $item->price) }}đ
                                     </p>
                                     <del class=""
                                         style="padding-left: 10px;font-size: 14px;font-weight: 700;color: #716b6b;">
@@ -137,7 +138,8 @@
                             <div class="p-2 lt-product-group-info">
                                 <h3 class="">{{ $item->name }}</h3>
                                 <div class="price-box">
-                                    <p class="price-sale">{{ number_format($item->price - ($item->sale / 100) * $item->price) }}đ
+                                    <p class="price-sale">
+                                        {{ number_format($item->price - ($item->sale / 100) * $item->price) }}đ
                                     </p>
                                     <del class=""
                                         style="padding-left: 10px;font-size: 14px;font-weight: 700;color: #716b6b;">

@@ -45,9 +45,7 @@
             .ck-editor__editable_inline {
                 height: 250px;
             }
-            tr{
-                text-align: center
-            }
+           
            
         </style>
         <!-- Preloader -->

@@ -28,7 +28,17 @@ class PageController extends Controller
             ->take(5)
             ->get();
 
-        return view('layout', compact('products', 'posts', 'banner', 'products_sale', 'categories'));
+        // lấy ra 5 sản phẩm bán chạy nhất 
+        $topProducts = DB::table('order_details')
+            ->select('products_id', DB::raw('SUM(quantity) as total_ordered'))
+            ->groupBy('products_id')
+            ->orderByDesc('total_ordered')
+            ->limit(5)
+            ->get();
+        $productIds = $topProducts->pluck('products_id');
+        $selling_product = Products::whereIn('id', $productIds)->get();
+
+        return view('layout', compact('products', 'posts', 'banner', 'products_sale', 'categories', 'selling_product'));
     }
 
     public function getProductIPhone($id)
@@ -44,7 +54,16 @@ class PageController extends Controller
             ->orderBy('sale', 'desc')
             ->take(5)
             ->get();
-        return view('frontEnd.page.product-category', compact('categories', 'products', 'posts', 'banner', 'item_product', 'category_name', 'products_sale'));
+        // lấy ra 5 sản phẩm bán chạy nhất 
+        $topProducts = DB::table('order_details')
+            ->select('products_id', DB::raw('SUM(quantity) as total_ordered'))
+            ->groupBy('products_id')
+            ->orderByDesc('total_ordered')
+            ->limit(5)
+            ->get();
+        $productIds = $topProducts->pluck('products_id');
+        $selling_product = Products::whereIn('id', $productIds)->get();
+        return view('frontEnd.page.product-category', compact('categories', 'products', 'posts', 'banner', 'item_product', 'category_name', 'products_sale', 'selling_product'));
     }
     public function infoUser()
     {
@@ -59,7 +78,16 @@ class PageController extends Controller
             ->orderBy('sale', 'desc')
             ->take(5)
             ->get();
-        return view('frontEnd.page.user', compact('categories', 'products', 'posts', 'banner', 'products_sale', 'orders', 'orders_detail'));
+        // lấy ra 5 sản phẩm bán chạy nhất 
+        $topProducts = DB::table('order_details')
+            ->select('products_id', DB::raw('SUM(quantity) as total_ordered'))
+            ->groupBy('products_id')
+            ->orderByDesc('total_ordered')
+            ->limit(5)
+            ->get();
+        $productIds = $topProducts->pluck('products_id');
+        $selling_product = Products::whereIn('id', $productIds)->get();
+        return view('frontEnd.page.user', compact('categories', 'products', 'posts', 'banner', 'products_sale', 'orders', 'orders_detail', 'selling_product'));
     }
     public function index(Request $request)
     {
@@ -76,7 +104,16 @@ class PageController extends Controller
         $products = Products::where('name', 'LIKE', "%$keyword%")
             ->orWhere('description', 'LIKE', "%$keyword%")
             ->get();
-        return view('frontEnd.page.search', compact('products', 'categories', 'banner', 'posts', 'products_sale'));
+        // lấy ra 5 sản phẩm bán chạy nhất 
+        $topProducts = DB::table('order_details')
+            ->select('products_id', DB::raw('SUM(quantity) as total_ordered'))
+            ->groupBy('products_id')
+            ->orderByDesc('total_ordered')
+            ->limit(5)
+            ->get();
+        $productIds = $topProducts->pluck('products_id');
+        $selling_product = Products::whereIn('id', $productIds)->get();
+        return view('frontEnd.page.search', compact('products', 'categories', 'banner', 'posts', 'products_sale', 'selling_product'));
     }
     public function getProducts()
     {
@@ -89,7 +126,16 @@ class PageController extends Controller
             ->orderBy('sale', 'desc')
             ->take(5)
             ->get();
-        return view('frontEnd.page.products', compact('categories', 'products', 'posts', 'banner', 'products_sale'))->with('i', (request()->input('page', 1) - 1) * 5);
+        // lấy ra 5 sản phẩm bán chạy nhất 
+        $topProducts = DB::table('order_details')
+            ->select('products_id', DB::raw('SUM(quantity) as total_ordered'))
+            ->groupBy('products_id')
+            ->orderByDesc('total_ordered')
+            ->limit(5)
+            ->get();
+        $productIds = $topProducts->pluck('products_id');
+        $selling_product = Products::whereIn('id', $productIds)->get();
+        return view('frontEnd.page.products', compact('categories', 'products', 'posts', 'banner', 'products_sale', 'selling_product'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
     public function getProductDetail($id)
     {
@@ -103,7 +149,16 @@ class PageController extends Controller
             ->orderBy('sale', 'desc')
             ->take(5)
             ->get();
-        return view('frontEnd.components.productDetail', compact('categories', 'products', 'posts', 'banner', 'item_product', 'products_sale'));
+        // lấy ra 5 sản phẩm bán chạy nhất 
+        $topProducts = DB::table('order_details')
+            ->select('products_id', DB::raw('SUM(quantity) as total_ordered'))
+            ->groupBy('products_id')
+            ->orderByDesc('total_ordered')
+            ->limit(5)
+            ->get();
+        $productIds = $topProducts->pluck('products_id');
+        $selling_product = Products::whereIn('id', $productIds)->get();
+        return view('frontEnd.components.productDetail', compact('categories', 'products', 'posts', 'banner', 'item_product', 'products_sale', 'selling_product'));
     }
     public function getListPosts()
     {
@@ -116,7 +171,16 @@ class PageController extends Controller
             ->orderBy('sale', 'desc')
             ->take(5)
             ->get();
-        return view('frontEnd.page.posts', compact('categories', 'products', 'posts', 'banner', 'products_sale'));
+        // lấy ra 5 sản phẩm bán chạy nhất 
+        $topProducts = DB::table('order_details')
+            ->select('products_id', DB::raw('SUM(quantity) as total_ordered'))
+            ->groupBy('products_id')
+            ->orderByDesc('total_ordered')
+            ->limit(5)
+            ->get();
+        $productIds = $topProducts->pluck('products_id');
+        $selling_product = Products::whereIn('id', $productIds)->get();
+        return view('frontEnd.page.posts', compact('categories', 'products', 'posts', 'banner', 'products_sale', 'selling_product'));
     }
     public function getDetailPosts($id)
     {
@@ -130,9 +194,17 @@ class PageController extends Controller
             ->orderBy('sale', 'desc')
             ->take(5)
             ->get();
-        return view('frontEnd.page.postDetail', compact('categories', 'products', 'posts', 'banner', 'item_posts', 'products_sale'));
+        // lấy ra 5 sản phẩm bán chạy nhất 
+        $topProducts = DB::table('order_details')
+            ->select('products_id', DB::raw('SUM(quantity) as total_ordered'))
+            ->groupBy('products_id')
+            ->orderByDesc('total_ordered')
+            ->limit(5)
+            ->get();
+        $productIds = $topProducts->pluck('products_id');
+        $selling_product = Products::whereIn('id', $productIds)->get();
+        return view('frontEnd.page.postDetail', compact('categories', 'products', 'posts', 'banner', 'item_posts', 'products_sale', 'selling_product'));
     }
-
 
 
     // thông tin liên hệ
@@ -147,7 +219,15 @@ class PageController extends Controller
             ->orderBy('sale', 'desc')
             ->take(5)
             ->get();
-        return view('frontEnd.page.contact', compact('categories', 'products', 'posts', 'banner', 'products_sale'));
+        $topProducts = DB::table('order_details')
+            ->select('products_id', DB::raw('SUM(quantity) as total_ordered'))
+            ->groupBy('products_id')
+            ->orderByDesc('total_ordered')
+            ->limit(5)
+            ->get();
+        $productIds = $topProducts->pluck('products_id');
+        $selling_product = Products::whereIn('id', $productIds)->get();
+        return view('frontEnd.page.contact', compact('categories', 'products', 'posts', 'banner', 'products_sale', 'selling_product'));
     }
     // 
     public function postContact(Request $request)

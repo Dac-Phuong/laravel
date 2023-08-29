@@ -76,9 +76,17 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        //
+        $orders = Order::findOrFail($id);
+        if ($orders->status == 1) {
+            $orders->status = '2';
+            $orders->save();
+        } else {
+            $orders->status = '1';
+            $orders->save();
+        }
+        return redirect()->back();
     }
 
     /**
