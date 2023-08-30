@@ -60,7 +60,10 @@
                                                             <option value="{{ $value->id }}">{{ $value->name }}</option>
                                                         @endforeach
                                                     </select>
-                                                    <div class="error"></div>
+                                                    @error('provinces_id')
+                                                        <span
+                                                            style="font-size: 14px;color: red;font-weight: 400">{{ $message }}</span>
+                                                    @enderror
                                                 </td>
                                             </tr>
                                             <tr style="border-style: hidden">
@@ -74,7 +77,10 @@
                                                             <option value="{{ $value->id }}">{{ $value->name }}</option>
                                                         @endforeach
                                                     </select>
-                                                    <div class="error"></div>
+                                                    @error('districts_id')
+                                                        <span
+                                                            style="font-size: 14px;color: red;font-weight: 400">{{ $message }}</span>
+                                                    @enderror
                                                 </td>
                                             </tr>
                                             <tr style="border-style: hidden">
@@ -83,7 +89,10 @@
                                                 <td>
                                                     <textarea name="address" placeholder="Địa chỉ giao hàng:" class="form-control" rows="4"
                                                         style="height: auto !important;" value=""></textarea>
-                                                    <div class="error"></div>
+                                                    @error('address')
+                                                        <span
+                                                            style="font-size: 14px;color: red;font-weight: 400">{{ $message }}</span>
+                                                    @enderror
                                                 </td>
                                             </tr>
                                             <tr style="border-style: hidden">
@@ -172,13 +181,15 @@
             </div>
         </section>
     </form>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+        integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @if (Session::has('message'))
         <script>
             swal("Message", "{{ Session::get('message') }}", 'success', {
                 button: true,
                 button: "oke",
-                timer:4000,
+                timer: 4000,
             })
         </script>
     @endif

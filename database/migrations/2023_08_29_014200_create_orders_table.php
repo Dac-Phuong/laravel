@@ -18,13 +18,14 @@ return new class extends Migration
             $table->string('name');
             $table->string('phone');
             $table->string('address');
-            $table->decimal('total_price', 10, 2);
+            $table->integer('total_price');
             $table->unsignedBigInteger('provinces_id');
             $table->unsignedBigInteger('districts_id');
             $table->unsignedBigInteger('user_id');
             $table->boolean('trash')->default(1);
             $table->string('status');
             $table->timestamps();
+            // key
             $table->foreign('provinces_id')->references('id')->on('provinces')->onDelete('cascade');
             $table->foreign('districts_id')->references('id')->on('districts')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

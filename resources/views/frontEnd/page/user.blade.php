@@ -53,7 +53,8 @@
                                             @elseif($item->status == 1)
                                                 <td style="padding:5px 10px; text-align: center;">Đang giao hàng</td>
                                             @else
-                                                <td style="padding:5px 10px; text-align: center;">Đơn hàng đã được giao</td>
+                                                <td style="padding:5px 10px; text-align: center;">Đơn hàng đã hoàn thành
+                                                </td>
                                             @endif
                                             <td class="d-flex">
                                                 <span> <a style="color: #fff;" class="btn btn-primary my-1"

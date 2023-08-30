@@ -17,6 +17,15 @@ class OrderPageController extends Controller
 {
     public function createOrder(Request $request)
     {
+        $request->validate([
+            'districts_id' => 'required',
+            'provinces_id' => 'required',
+            'address' => 'required',
+        ], [
+            'districts_id.required' => 'Tỉnh thành không được để trống !',
+            'provinces_id.required' => 'Quận huyện không được để trống !',
+            'address.required' => 'Địa chỉ không được để trống !'
+        ]);
         if (Auth::check()) {
             $user_id = auth()->user()->id;
             $data = [
@@ -42,12 +51,12 @@ class OrderPageController extends Controller
                     'status' => '0',
                 ]);
                 $order->order_detail()->save($order_details);
-                $totalPrice += ($product['quantity'] * $product['price'] + $ship);
+                $totalPrice += ($product['quantity'] * $product['price']);
             }
-            $order->total_price = $totalPrice;
+            $order->total_price = $totalPrice + $ship;
             $order->save();
         }
-        return redirect()->back()->with('message', 'Đơn hàng của bạn đã được đặt thành công.');
+        return redirect()->route('getUser')->with('message', 'Đơn hàng của bạn đã được đặt thành công.');
     }
     public function orders_detail($id)
     {
@@ -63,7 +72,6 @@ class OrderPageController extends Controller
         $orders = Order::find($id);
         $orders_detail = OrderDetail::all();
         $products = Products::latest()->paginate(10);
-
 
         $topProducts = DB::table('order_details')
             ->select('products_id', DB::raw('SUM(quantity) as total_ordered'))

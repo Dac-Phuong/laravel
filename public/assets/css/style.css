@@ -135,6 +135,17 @@
         border: 1px solid #dcdcdc;
     }
 
+    .back-to-top {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 99;
+        font-size: 16px;
+        cursor: pointer;
+        border: 1px solid #fff;
+    }
+
     /* ---------------------------------------------------checkout---------------------------------------------------------------------- */
 
     .col-login-checkout>p {
