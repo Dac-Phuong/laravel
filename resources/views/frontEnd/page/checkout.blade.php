@@ -3,6 +3,7 @@
     $item_Cart = session('cart');
     $totalAmount = 0;
     $ship = 30000;
+    $provinces_id = '';
 @endphp
 @section('main')
     <form action="{{ route('createOrder') }}" method="POST" accept-charset="utf-8">
@@ -24,7 +25,7 @@
                                                         class="require_symbol">* </span></td>
                                                 <td>
                                                     <input type="text" class="form-control" placeholder="Họ và tên"
-                                                        name="name" value="{{ Auth::user()->name }}">
+                                                        name="name" disabled value="{{ Auth::user()->name }}">
                                                     <div class="error"></div>
                                                 </td>
                                             </tr>
@@ -59,13 +60,16 @@
                                                         @foreach ($province as $key => $value)
                                                             <option value="{{ $value->id }}">{{ $value->name }}</option>
                                                         @endforeach
+                                                        @error('provinces_id')
+                                                            <span
+                                                                style="font-size: 14px;color: red;font-weight: 400">{{ $message }}</span>
+                                                        @enderror
                                                     </select>
-                                                    @error('provinces_id')
-                                                        <span
-                                                            style="font-size: 14px;color: red;font-weight: 400">{{ $message }}</span>
-                                                    @enderror
                                                 </td>
                                             </tr>
+                                            @php
+                                                echo $provinces_id;
+                                            @endphp
                                             <tr style="border-style: hidden">
                                                 <td class="width30 text-right td-right-order">Quận/Huyện: <span
                                                         class="require_symbol">* </span></td>
@@ -76,11 +80,12 @@
                                                         @foreach ($district as $key => $value)
                                                             <option value="{{ $value->id }}">{{ $value->name }}</option>
                                                         @endforeach
+                                                        @error('districts_id')
+                                                            <span
+                                                                style="font-size: 14px;color: red;font-weight: 400">{{ $message }}</span>
+                                                        @enderror
                                                     </select>
-                                                    @error('districts_id')
-                                                        <span
-                                                            style="font-size: 14px;color: red;font-weight: 400">{{ $message }}</span>
-                                                    @enderror
+
                                                 </td>
                                             </tr>
                                             <tr style="border-style: hidden">

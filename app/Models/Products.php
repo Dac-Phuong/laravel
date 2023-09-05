@@ -21,4 +21,8 @@ class Products extends Model
         'status',
         'category_id',
     ];
+    public function products()
+    {
+        return $this->hasMany(Categories::class, 'category_id');
+    }
 }

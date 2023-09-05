@@ -15,8 +15,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::all();
-        return view('admin.order.list', compact('orders'));
+        $orders = Order::latest()->paginate(8);
+        return view('admin.order.list', compact('orders'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function order_Detail($id)

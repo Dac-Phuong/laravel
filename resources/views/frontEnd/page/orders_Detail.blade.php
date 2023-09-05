@@ -74,8 +74,8 @@
                 </div>
             </div>
             <div class="col-xs-12">
-                <a href="javascript:void(0);" onclick="window.history.back();" class="viewMore pull-left btn btn-primary" style="font-size: 15px;"><i
-                        class="fa fa-angle-left" aria-hidden="true"></i> Trở về trang
+                <a href="javascript:void(0);" onclick="window.history.back();" class="viewMore pull-left btn btn-primary"
+                    style="font-size: 15px;"><i class="fa fa-angle-left" aria-hidden="true"></i> Trở về trang
                     trước</a>
             </div>
         </div>

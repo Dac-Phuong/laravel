@@ -31,9 +31,6 @@ Route::get('/login', [LoginPageController::class, 'loginPage'])->name('viewLogin
 Route::post('/login', [LoginPageController::class, 'login'])->name('userLogin');
 Route::get('/register', [RegisterPageController::class, 'getViewRegister'])->name('getRegister');
 Route::post('/register', [RegisterPageController::class, 'register'])->name('userRegister');
-
-
-
 // page
 Route::get('/products', [PageController::class, 'getProducts'])->name('products');
 Route::get('/product-detail/{id}', [PageController::class, 'getProductDetail'])->name('productDetail');
@@ -45,13 +42,12 @@ Route::post('/contact', [PageController::class, 'postContact'])->name('postConta
 Route::get('/search', [PageController::class, 'index'])->name('search');
 Route::get('/search', [PageController::class, 'index'])->name('search');
 
-
 Route::group(['prefix' => 'cart'], function () {
     Route::get('/list', [CartController::class, 'cartPage'])->name('viewCart');
     Route::get('/list/{id}', [CartController::class, 'addToCart'])->name('addToCart');
     Route::put('/update/{id}', [CartController::class, 'updateCart'])->name('updateCart');
     Route::delete('/delete', [CartController::class, 'deleteItemCart'])->name('deleteItemCart');
-
+    Route::get('/get-districts', [DistrictController::class, 'getDistricts']);
     Route::get('/checkout', [CheckoutPageController::class, 'checkoutPage'])->name('checkoutPage');
     Route::post('/order', [OrderPageController::class, 'createOrder'])->name('createOrder');
     Route::get('/order/detail/{id}', [OrderPageController::class, 'orders_detail'])->name('ordersDetail');
@@ -73,6 +69,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/', [AuthController::class, 'postLogin'])->name('postLoginAdmin');
 
     Route::group(['middleware' => 'adminLogin'], function () {
+
         Route::get('/users', [UserController::class, 'index'])->name('getListUser');
         Route::get('/info/{id}', [UserController::class, 'edit'])->name('infoUser');
         Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('delete_User');

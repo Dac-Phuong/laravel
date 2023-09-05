@@ -55,7 +55,8 @@
                         <div class="mb-3 flex-nowrap">
                             <label for="exampleInputPassword1" class="form-label" style="width: 100%;">Hình ảnh sản
                                 phẩm</label>
-                            <input type="file" value="{{ $product->image }}" name="file_upload">
+                            <input type="file" name="file_upload">
+                            <input type="hidden" name="old_image" value="{{ $product->image }}">
                             @error('image')
                                 <span style="font-size: 14px;color: red;font-weight: 400">{{ $message }}</span>
                             @enderror
@@ -95,7 +96,6 @@
                             <input type="number" class="form-control" value="{{ $product->quantity }}" value="1"
                                 name="quantity">
                         </div>
-
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary ml-3">Lưu sản phẩm</button>

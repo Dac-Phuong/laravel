@@ -98,13 +98,17 @@ class ProductController extends Controller
      */
     public function update(Request $request, Products $products, $id)
     {
+        $oldImagePath = $request->input('old_image');
+
         if ($request->has('file_upload')) {
             $image = $request->file_upload;
             $ext = $request->file_upload->extension();
             $file_name = time() . '-' . 'product.' . $ext;
             $image->move(public_path('uploads'), $file_name);
+            $request->merge(['image' => $file_name]);
+        } else {
+            $request->merge(['image' => $oldImagePath]);
         }
-        $request->merge(['image' => $file_name]);
         $data = $request->all();
         $products = Products::findOrFail($id);
         $products->update($data);

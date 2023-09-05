@@ -39,15 +39,22 @@ class OrderPageController extends Controller
                 'status' => '0',
             ];
             $order = Order::create($data);
+            $products = Products::all();
             $cart = session()->get('cart');
             $totalPrice = 0;
             $ship = 30000;
             foreach ($cart as $id => $product) {
+                foreach ($products as $key => $item) {
+                    if ($item->id == $id) {
+                        $item->status += 1;
+                        $item->save();
+                    }
+                }
                 $order_details = new OrderDetail([
                     'name_product' => $product['name'],
                     'products_id' => $id,
                     'quantity' => $product['quantity'],
-                    'price' => $product['price'],
+                    'price' => $product['price'] - ($product['sale'] / 100 * $product['price']),
                     'status' => '0',
                 ]);
                 $order->order_detail()->save($order_details);
@@ -63,24 +70,13 @@ class OrderPageController extends Controller
         $categories = Categories::all();
         $posts = Posts::all();
         $banner = Banner::all();
-        $products_sale = DB::table('products')
-            ->where('sale', '>=', 5)
-            ->orderBy('sale', 'desc')
-            ->take(5)
-            ->get();
-
         $orders = Order::find($id);
         $orders_detail = OrderDetail::all();
         $products = Products::latest()->paginate(10);
-
-        $topProducts = DB::table('order_details')
-            ->select('products_id', DB::raw('SUM(quantity) as total_ordered'))
-            ->groupBy('products_id')
-            ->orderByDesc('total_ordered')
-            ->limit(5)
-            ->get();
-        $productIds = $topProducts->pluck('products_id');
-        $selling_product = Products::whereIn('id', $productIds)->get();
+        // lấy ra 5 sản phẩm khuyến mãi 
+        $products_sale = DB::table('products')->orderBy('sale', 'desc')->limit(5)->get();
+        // lấy ra 5 sản phẩm bán chạy nhất 
+        $selling_product = DB::table('products')->orderBy('status', 'desc')->limit(5)->get();
         return view('frontEnd.page.orders_Detail', compact('orders', 'orders_detail', 'categories', 'posts', 'banner', 'products_sale', 'products', 'selling_product'));
     }
 }

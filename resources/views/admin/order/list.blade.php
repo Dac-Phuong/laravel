@@ -85,6 +85,6 @@
                 </table>
             </div>
         </div>
-        {{-- {!! $listProduct->links()!!} --}}
+        {!! $orders->links() !!}
     </div>
 @endsection
