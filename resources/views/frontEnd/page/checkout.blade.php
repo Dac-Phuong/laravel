@@ -25,7 +25,7 @@
                                                         class="require_symbol">* </span></td>
                                                 <td>
                                                     <input type="text" class="form-control" placeholder="Họ và tên"
-                                                        name="name" disabled value="{{ Auth::user()->name }}">
+                                                        name="name"  value="{{ Auth::user()->name }}">
                                                     <div class="error"></div>
                                                 </td>
                                             </tr>

@@ -19,19 +19,26 @@ class PageController extends Controller
     public function homePage()
     {
         $categories = Categories::all();
+        foreach ($categories as $key => $value) {
+            $value["products"] = Products::where('category_id', $value->id)->get();
+        }
         $products = Products::all();
         $posts = Posts::all();
         $banner = Banner::all();
-        // lấy ra 5 sản phẩm khuyến mãi 
+        // lấy ra 5 sản phẩm khuyến mãi  lớn nhất
         $products_sale = DB::table('products')->orderBy('sale', 'desc')->limit(5)->get();
         // lấy ra 5 sản phẩm bán chạy nhất 
         $selling_product = DB::table('products')->orderBy('status', 'desc')->limit(5)->get();
+
         return view('layout', compact('products', 'posts', 'banner', 'products_sale', 'categories', 'selling_product'));
     }
 
     public function getProductIPhone($id)
     {
         $categories = Categories::all();
+        foreach ($categories as $key => $value) {
+            $value["products"] = Products::where('category_id', $value->id)->get();
+        }
         $products = Products::latest()->paginate(10);
         $posts = Posts::all();
         $banner = Banner::all();
@@ -40,7 +47,6 @@ class PageController extends Controller
         // lấy ra 5 sản phẩm khuyến mãi 
         $products_sale = DB::table('products')->orderBy('sale', 'desc')->limit(5)->get();
         // lấy ra 5 sản phẩm bán chạy nhất 
-
         $selling_product = DB::table('products')->orderBy('status', 'desc')->limit(5)->get();
 
         return view('frontEnd.page.product-category', compact('categories', 'products', 'posts', 'banner', 'item_product', 'category_name', 'products_sale', 'selling_product'));
@@ -48,6 +54,9 @@ class PageController extends Controller
     public function infoUser()
     {
         $categories = Categories::all();
+        foreach ($categories as $key => $value) {
+            $value["products"] = Products::where('category_id', $value->id)->get();
+        }
         $products = Products::latest()->paginate(10);
         $posts = Posts::all();
         $banner = Banner::all();
@@ -63,6 +72,9 @@ class PageController extends Controller
     public function index(Request $request)
     {
         $categories = Categories::all();
+        foreach ($categories as $key => $value) {
+            $value["products"] = Products::where('category_id', $value->id)->get();
+        }
         $posts = Posts::all();
         $banner = Banner::all();
         // lấy ra 5 sản phẩm khuyến mãi 
@@ -79,6 +91,9 @@ class PageController extends Controller
     public function getProducts()
     {
         $categories = Categories::all();
+        foreach ($categories as $key => $value) {
+            $value["products"] = Products::where('category_id', $value->id)->get();
+        }
         $products = Products::latest()->paginate(10);
         $posts = Posts::all();
         $banner = Banner::all();
@@ -92,10 +107,13 @@ class PageController extends Controller
     public function getProductDetail($id)
     {
         $categories = Categories::all();
-        $products = Products::latest()->paginate(10);
+        foreach ($categories as $key => $value) {
+            $value["products"] = Products::where('category_id', $value->id)->get();
+        }
+        $item_product = Products::find($id);
+        $products = Products::where('category_id', $item_product->category_id)->get();
         $posts = Posts::all();
         $banner = Banner::all();
-        $item_product = Products::find($id);
         // lấy ra 5 sản phẩm khuyến mãi 
         $products_sale = DB::table('products')->orderBy('sale', 'desc')->limit(5)->get();
         // lấy ra 5 sản phẩm bán chạy nhất 
@@ -106,6 +124,9 @@ class PageController extends Controller
     public function getListPosts()
     {
         $categories = Categories::all();
+        foreach ($categories as $key => $value) {
+            $value["products"] = Products::where('category_id', $value->id)->get();
+        }
         $products = Products::latest()->paginate(10);
         $posts = Posts::all();
         $banner = Banner::all();
@@ -119,6 +140,9 @@ class PageController extends Controller
     public function getDetailPosts($id)
     {
         $categories = Categories::all();
+        foreach ($categories as $key => $value) {
+            $value["products"] = Products::where('category_id', $value->id)->get();
+        }
         $products = Products::latest()->paginate(10);
         $posts = Posts::all();
         $banner = Banner::all();
@@ -136,6 +160,9 @@ class PageController extends Controller
     public function getContact()
     {
         $categories = Categories::all();
+        foreach ($categories as $key => $value) {
+            $value["products"] = Products::where('category_id', $value->id)->get();
+        }
         $products = Products::latest()->paginate(10);
         $posts = Posts::all();
         $banner = Banner::all();

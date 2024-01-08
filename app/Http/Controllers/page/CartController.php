@@ -15,6 +15,9 @@ class CartController extends Controller
     public function cartPage()
     {
         $categories = Categories::all();
+        foreach ($categories as $key => $value) {
+            $value["products"] = Products::where('category_id',$value->id)->get(); 
+         }
         $products = Products::latest()->paginate(10);
         $posts = Posts::all();
         $banner = Banner::all();
@@ -33,7 +36,7 @@ class CartController extends Controller
         } else {
             $cart[$id] = [
                 'name' => $product->name,
-                'quantity' => $product->quantity,
+                'quantity' => 1,
                 'price' => $product->price,
                 'sale' => $product->sale,
                 'image' => $product->image,
@@ -44,30 +47,4 @@ class CartController extends Controller
         return redirect()->back()->with('success', 'Thêm sản phẩm thành công');
     }
 
-    public function updateCart(Request $request, $id)
-    {
-        $quantity = $request->input('quantity');
-
-        if ($quantity <= 0) {
-            return redirect()->back();
-        }
-        $cart = session()->get('cart', []);
-        if (array_key_exists($id, $cart)) {
-            $cart[$id]['quantity'] = $quantity;
-        }
-        session()->put('cart', $cart);
-        return redirect()->back();
-    }
-
-    public function deleteItemCart(Request $request)
-    {
-        if ($request->id) {
-            $cart = session()->get('cart');
-            if (isset($cart[$request->id])) {
-                unset($cart[$request->id]);
-                session()->put('cart', $cart);
-            }
-            session()->flash('succsess', 'Xóa thành công');
-        }
-    }
 }

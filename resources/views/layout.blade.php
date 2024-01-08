@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('/assets/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/owl.carousel.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/style.css') }}">
+    @livewireStyles
 </head>
 
 <body>
@@ -27,6 +28,7 @@
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
     @yield('script')
+    @livewireScripts
     <button id="backToTopBtn" class="back-to-top btn btn-primary"><i class="fa-solid fa-arrow-up"></i></button>
     <script>
         var backToTopButton = document.getElementById("backToTopBtn");

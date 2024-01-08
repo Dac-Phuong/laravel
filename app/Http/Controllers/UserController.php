@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
 
 class UserController extends Controller
 {
@@ -14,8 +13,8 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $listUser = User::where('roles', 0)->get();
-        return view('admin.users.list', compact('listUser'))->with('i', (request()->input('page', 1) - 1) * 5);
+
+        return view('admin.users.list');
     }
 
     /**
@@ -58,8 +57,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('admin.users.info', compact('user'));
+        
     }
 
     /**
@@ -82,10 +80,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        if ($user) {
-            $user->delete();
-            return redirect()->route('getListUser')->with('thongbao', 'xóa người dùng thành công!');
-        }
+      
     }
 }

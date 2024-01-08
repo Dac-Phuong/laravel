@@ -11,33 +11,35 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="" method="">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <strong>Họ tên</strong>
-                                <input disabled type="text" name="name" value="{{$user->name}}" class="form-control" placeholder="Nhập mã sinh viên">
-                            </div>
-                           <div class="form-group">
-                                <strong>Email</strong>
-                                <input disabled type="text" name="email" value="{{$user->email}}" class="form-control" placeholder="Nhập họ tên">
-                            </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong>Họ tên</strong>
+                            <input disabled type="text" name="name" value="{{ $user->name }}" class="form-control"
+                                placeholder="Nhập mã sinh viên">
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <strong>Địa chỉ</strong>
-                                <input disabled type="text" value="{{$user->address}}" name="addrees" class="form-control" placeholder="Nhập địa chỉ">
-                            </div>
-                            <div class="form-group">
-                                <strong>Số điện thoại</strong>
-                                <input disabled type="text" value="{{$user->phone}}" name="phone" class="form-control" placeholder="Nhập số điện thoại">
-                            </div>
+                        <div class="form-group">
+                            <strong>Email</strong>
+                            <input disabled type="text" name="email" value="{{ $user->email }}" class="form-control"
+                                placeholder="Nhập họ tên">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success mt-2">
-                        <a class="text-white" href="{{route('getListUser')}}">Thoát</a>
-                    </button>
-                </form>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong>Địa chỉ</strong>
+                            <input disabled type="text" value="{{ $user->address }}" name="addrees" class="form-control"
+                                placeholder="Nhập địa chỉ">
+                        </div>
+                        <div class="form-group">
+                            <strong>Số điện thoại</strong>
+                            <input disabled type="text" value="{{ $user->phone }}" name="phone" class="form-control"
+                                placeholder="Nhập số điện thoại">
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-success mt-2">
+                    <a href="javascript:void(0);" onclick="window.history.back();" style="color: #fff">Quay trở lại</a>
+                </button>
             </div>
         </div>
     </div>

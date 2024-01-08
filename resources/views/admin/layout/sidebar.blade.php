@@ -1,153 +1,141 @@
-@section('contents')
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-        <img src="{{asset('dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">Trang quản trị</span>
-    </a>
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
-            </div>
-            <div class="info">
-                <a href="#" class="d-block">Admin</a>
-            </div>
-        </div>
-
-        <!-- SidebarSearch Form -->
-        <div class="form-inline">
-            <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-sidebar">
-                        <i class="fas fa-search fa-fw"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-item menu-open">
-                    <a href="{{route('getListUser')}}" class="nav-link active">
-                        <i class="fa-solid fa-user" style="margin-top: -4px"></i>
-                        <p>
-                            Người dùng
-                        </p>
-                    </a>
-                   
-                </li>
-              
-               <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
-                        <i class="fa-brands fa-product-hunt" style="margin-top: -4px"></i>
-                        <p>
-                            Sản phẩm
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                         <li class="nav-item">
-                            <a href="{{route('listProduct')}}" class="nav-link ">
-                                <p>Danh sách sản phẩm</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('createProduct')}}" class="nav-link ">
-                                <p>Thêm sản phẩm</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
-                        <i class="fa-solid fa-copyright" style="margin-top: -4px"></i>
-                        <p>
-                            Danh mục
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                         <li class="nav-item">
-                            <a href="{{route('listCategory')}}" class="nav-link ">
-                                <p>Danh sách danh mục</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('createCategory')}}" class="nav-link ">
-                                <p>Thêm danh mục</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                  <li class="nav-item menu-open">
-                    <a href="{{route('order')}}" class="nav-link active">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <p>
-                            Đơn hàng
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
-                        <i class="fa-solid fa-file-pen" style="margin-top: -4px"></i>
-                        <p>
-                            Bài viết
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                         <li class="nav-item">
-                            <a href="{{route('listPosts')}}" class="nav-link ">
-                                <p>Danh sách bài viết</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('createPost')}}" class="nav-link ">
-                                <p>Thêm bài viết</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                 <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
-                        <i class="fa-solid fa-image" style="margin-top: -4px"></i>
-                        <p>
-                            Banner
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                         <li class="nav-item">
-                            <a href="{{route('listBanner')}}" class="nav-link ">
-                                <p>Danh sách banner</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('createBanner')}}" class="nav-link ">
-                                <p>Thêm banner</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                 <li class="nav-item menu-open">
-                    <a href="{{route('listContact')}}" class="nav-link active">
-                        <i class="fa-solid fa-comment"></i>
-                        <p>
-                            Liên hệ
-                        </p>
-                    </a>
-                </li>
-                 
-                
-            </ul>
-        </nav>
-        <!-- /.sidebar-menu -->
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+    <div class="app-brand demo">
+        <a href="#" class="app-brand-link">
+            <span class="app-brand-logo demo">
+                <svg width="32" height="22" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M0.00172773 0V6.85398C0.00172773 6.85398 -0.133178 9.01207 1.98092 10.8388L13.6912 21.9964L19.7809 21.9181L18.8042 9.88248L16.4951 7.17289L9.23799 0H0.00172773Z"
+                        fill="#7367F0" />
+                    <path opacity="0.06" fill-rule="evenodd" clip-rule="evenodd"
+                        d="M7.69824 16.4364L12.5199 3.23696L16.5541 7.25596L7.69824 16.4364Z" fill="#161616" />
+                    <path opacity="0.06" fill-rule="evenodd" clip-rule="evenodd"
+                        d="M8.07751 15.9175L13.9419 4.63989L16.5849 7.28475L8.07751 15.9175Z" fill="#161616" />
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M7.77295 16.3566L23.6563 0H32V6.88383C32 6.88383 31.8262 9.17836 30.6591 10.4057L19.7824 22H13.6938L7.77295 16.3566Z"
+                        fill="#7367F0" />
+                </svg>
+            </span>
+            <span class="app-brand-text demo menu-text fw-bold">Smart store</span>
+        </a>
+        <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+            <i class="ti menu-toggle-icon d-none d-xl-block ti-sm align-middle"></i>
+            <i class="ti ti-x d-block d-xl-none ti-sm align-middle"></i>
+        </a>
     </div>
-    <!-- /.sidebar -->
+    <div class="menu-inner-shadow"></div>
+    <ul class="menu-inner py-1">
+        <!-- Dashboards -->
+        <li class="menu-item  {{ request()->routeIs('home') ? 'active open' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                <div data-i18n="Bảng điều khiển">Bảng điều khiển</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ request()->routeIs('home') ? 'active' : '' }}">
+                    <a href="{{ route('home') }}" class="menu-link">
+                        <div data-i18n="Thống kê">Thống kê</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Layouts -->
+        <li class="menu-item {{ request()->routeIs('getListUser') ? 'active open' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-users"></i>
+                <div data-i18n="Quản lý người dùng">Quản lý người dùng</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ request()->routeIs('getListUser') ? 'active' : '' }}">
+                    <a href="{{ route('getListUser') }}" class="menu-link">
+                        <div data-i18n="Danh sách">Danh sách</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu-item {{ request()->routeIs('listProduct') ? 'active open' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon ti ti-brand-producthunt"></i>
+                <div data-i18n="Quản lý sản phẩm">Quản lý sản phẩm</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ request()->routeIs('listProduct') ? 'active' : '' }}">
+                    <a href="{{ route('listProduct') }}" class="menu-link">
+                        <div data-i18n="Danh sách">Danh sách</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu-item {{ request()->routeIs('listCategory') ? 'active open' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon ti ti-category"></i>
+                <div data-i18n="Quản lý danh mục">Quản lý danh mục</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ request()->routeIs('listCategory') ? 'active' : '' }}">
+                    <a href="{{ route('listCategory') }}" class="menu-link">
+                        <div data-i18n="Danh sách">Danh sách</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu-item {{ request()->routeIs('order') ? 'active open' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon ti ti-garden-cart"></i>
+                <div data-i18n="Quản lý đơn hàng">Quản lý đơn hàng </div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ request()->routeIs('order') ? 'active' : '' }}">
+                    <a href="{{route('order')}}" class="menu-link">
+                        <div data-i18n="Danh sách">Danh sách</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu-item {{ request()->routeIs('listPosts') ? 'active open' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon ti ti-file-pencil"></i>
+                <div data-i18n="Quản lý bài viết">Quản lý bài viết</div>
+
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ request()->routeIs('listPosts') ? 'active' : '' }}">
+                    <a href="{{route('listPosts')}}" class="menu-link">
+                        <div data-i18n="Danh sách">Danh sách</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+       
+        <li class="menu-item {{ request()->routeIs('listBanner') ? 'active open' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon ti ti-photo-filled"></i>
+                <div data-i18n="Quản lý Banner">Quản lý Banner</div>
+
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ request()->routeIs('listBanner') ? 'active' : '' }}">
+                    <a href="{{route('listBanner')}}" class="menu-link">
+                        <div data-i18n="Danh sách">Danh sách</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu-item {{ request()->routeIs('listContact') ? 'active open' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon ti ti-address-book"></i>
+                <div data-i18n="Quản lý liên hệ">Quản lý liên hệ</div>
+
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ request()->routeIs('listContact') ? 'active' : '' }}">
+                    <a href="{{route('listContact')}}" class="menu-link">
+                        <div data-i18n="Danh sách">Danh sách</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+       
+
+    </ul>
 </aside>
-@endsection

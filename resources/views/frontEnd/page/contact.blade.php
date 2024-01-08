@@ -23,7 +23,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group" style="width: 200px;">
                                             <label for="name"><em> Họ tên</em><span class="required">*</span></label>
-                                            <input id="name" name="name" type="text" value=""
+                                            <input id="name" name="name" type="text" value=""   .0
                                                 class="form-control" fdprocessedid="q9687g">
                                             @error('name')
                                                 <span

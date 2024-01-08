@@ -44,7 +44,7 @@ class OrderPageController extends Controller
             $totalPrice = 0;
             $ship = 30000;
             foreach ($cart as $id => $product) {
-                foreach ($products as $key => $item) {
+                foreach ($products as $item) {
                     if ($item->id == $id) {
                         $item->status += 1;
                         $item->save();
@@ -68,6 +68,9 @@ class OrderPageController extends Controller
     public function orders_detail($id)
     {
         $categories = Categories::all();
+        foreach ($categories as $key => $value) {
+            $value["products"] = Products::where('category_id',$value->id)->get(); 
+         }
         $posts = Posts::all();
         $banner = Banner::all();
         $orders = Order::find($id);

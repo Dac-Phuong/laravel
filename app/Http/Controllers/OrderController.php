@@ -78,15 +78,7 @@ class OrderController extends Controller
      */
     public function update($id)
     {
-        $orders = Order::findOrFail($id);
-        if ($orders->status == 1) {
-            $orders->status = '2';
-            $orders->save();
-        } else {
-            $orders->status = '1';
-            $orders->save();
-        }
-        return redirect()->back();
+      
     }
 
     /**
@@ -97,10 +89,6 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        $id = Order::find($id);
-        if ($id) {
-            $id->delete();
-            return redirect()->back()->with('success', 'xóa bài viết thành công');
-        }
+       
     }
 }

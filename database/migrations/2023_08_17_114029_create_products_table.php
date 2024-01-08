@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string("price_sale");
             $table->longText('description')->nullable();
             $table->string("sale");
-            $table->integer("quantity");
             $table->unsignedBigInteger('category_id');
             $table->tinyInteger('status');
             // $table->foreign('category_id')->references('id')->on('categories');

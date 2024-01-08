@@ -16,7 +16,7 @@
             <div class="d-flex flex-wrap">
                 <div class="col-md-6 border">
                     <img style="width: 100%;object-fit: contain;height: 90%;margin: 3% 0;"
-                        src="/uploads/{{ $item_product->image }}" alt="">
+                        src="{{ asset('storage/uploads/' . $item_product->image) }}" alt="">
                 </div>
                 <div class="col-md-6 py-3 px-3  ">
                     <div class="product-view-name">
@@ -105,41 +105,39 @@
                     {{ $item_product->description }}
                 </span>
             </div>
-            {{-- <div class="mt-3">
+            <div class="mt-5">
                 <h2
                     style="border-bottom: 3px solid #286CD9;text-transform: uppercase;padding: 5px 0px;font-size: 18px;font-weight: 600;color:#286CD9">
                     Sản phẩm liên quan</h2>
                 <div class="d-flex flex-wrap ">
                     <div class="owl-carousel owl-theme">
                         @foreach ($products as $key => $item)
-                            @if ($item->category_id == 3)
-                                <div class="item border" style="border-left: none ">
-                                    <div style="height: 290px; position: relative;border-left: none !important">
-                                        <div class="box-sale">
-                                            <span>-{{ $item->sale }}%</span>
-                                        </div>
-                                        <a class="p-2" style="display: block;height: 70%;"
-                                            href="{{ route('productDetail', $item->id) }}">
-                                            <img class="product-img" src="/uploads/{{ $item->image }}"
-                                                style="width: 100%; height: 100%;object-fit: contain"></a>
-                                        <div class="p-2 lt-product-group-info">
-                                            <h3 class="">{{ $item->name }}</h3>
-                                            <div class="price-box">
-                                                <p class="price-sale">
-                                                    {{ number_format($item->price - ($item->sale / 100) * $item->price) }}đ
-                                                </p>
-                                                <del class=""
-                                                    style="padding-left: 10px;font-size: 14px;font-weight: 700;color: #716b6b;">
-                                                    {{ number_format($item->price) }}đ</del>
-                                            </div>
+                            <div class="item border" style="border-left: none ">
+                                <div style="height: 290px; position: relative;border-left: none !important">
+                                    <div class="box-sale">
+                                        <span>-{{ $item->sale }}%</span>
+                                    </div>
+                                    <a class="p-2" style="display: block;height: 70%;"
+                                        href="{{ route('productDetail', $item->id) }}">
+                                        <img class="product-img" src="{{ asset('storage/uploads/' . $item->image) }}"
+                                            style="width: 100%; height: 100%;object-fit: contain"></a>
+                                    <div class="p-2 lt-product-group-info">
+                                        <h3 class="">{{ $item->name }}</h3>
+                                        <div class="price-box">
+                                            <p class="price-sale">
+                                                {{ number_format($item->price - ($item->sale / 100) * $item->price) }}đ
+                                            </p>
+                                            <del class=""
+                                                style="padding-left: 10px;font-size: 14px;font-weight: 700;color: #716b6b;">
+                                                {{ number_format($item->price) }}đ</del>
                                         </div>
                                     </div>
                                 </div>
-                            @endif
+                            </div>
                         @endforeach
                     </div>
                 </div>
-            </div> --}}
+            </div>
         </div>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
@@ -147,7 +145,7 @@
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         @if (Session::has('success'))
             <script>
-                swal("Message", "{{ Session::get('success') }}", 'success', {
+                swal("Thông báo!", "{{ Session::get('success') }}", 'success', {
                     button: true,
                     button: "oke",
                     timer: 4000,

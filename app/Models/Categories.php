@@ -11,9 +11,14 @@ class Categories extends Model
     protected $table = 'categories';
     protected $fillable = [
         'name',
+        'image',
     ];
     public function categories()
     {
         return $this->belongsTo(Products::class, 'category_id');
+    }
+    public function scopeSearch($query, $value)
+    {
+        $query->where('name', 'like', "%{$value}%");
     }
 }

@@ -25,7 +25,6 @@ class BannerController extends Controller
      */
     public function create()
     {
-        return view('admin.banner.create');
     }
 
     /**
@@ -36,26 +35,7 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate(
-        //     [
-        //         'name' => 'required',
-        //         'image' => 'required',
-        //     ],
-        //     [
-        //         'name.required' => 'Bạn chưa nhập tên Banner',
-        //         'image.required' => 'Bạn chưa chọn file ảnh',
-        //     ]
-        // );
-        if ($request->has('file_upload')) {
-            $image = $request->file_upload;
-            $ext = $request->file_upload->extension();
-            $file_name = time() . '-' . 'product.' . $ext;
-            $image->move(public_path('uploads'), $file_name);
-        }
-        $request->merge(['image' => $file_name]);
-
-        Banner::create($request->all());
-        return redirect()->route('listBanner')->with('success', 'Thêm Banner thành công');
+       
     }
 
     /**
@@ -76,8 +56,6 @@ class BannerController extends Controller
      */
     public function edit($id)
     {
-        $banner = Banner::find($id);
-        return view('admin.banner.update', compact('banner'));
     }
 
     /**
@@ -89,17 +67,7 @@ class BannerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $banner = Banner::find($id);
-        if ($request->has('file_upload')) {
-            $image = $request->file_upload;
-            $ext = $request->file_upload->extension();
-            $file_name = time() . '-' . 'product.' . $ext;
-            $image->move(public_path('uploads'), $file_name);
-        }
-        $request->merge(['image' => $file_name]);
-        $data = $request->all();
-        $banner->update($data);
-        return redirect()->route('listBanner')->with('success', 'Sửa Banner thành công');
+       
     }
 
     /**
@@ -110,10 +78,6 @@ class BannerController extends Controller
      */
     public function destroy($id)
     {
-        $id = Banner::find($id);
-        if ($id) {
-            $id->delete();
-            return redirect()->route('listBanner')->with('success', 'Xóa Banner thành công');
-        }
+        
     }
 }

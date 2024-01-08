@@ -20,6 +20,10 @@ class Order extends Model
         'trash',
         'status',
     ];
+    public function scopeSearch($query, $value)
+    {
+        $query->where('name', 'like', "%{$value}%")->orwhere('phone', 'like', "%{$value}%");
+    }
     public function order_detail()
     {
         return $this->hasMany(OrderDetail::class, 'orders_id');

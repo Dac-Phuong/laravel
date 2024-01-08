@@ -17,6 +17,9 @@ class RegisterPageController extends Controller
     public function getViewRegister()
     {
         $categories = Categories::all();
+        foreach ($categories as $key => $value) {
+            $value["products"] = Products::where('category_id',$value->id)->get(); 
+         }
         $products = Products::latest()->paginate(10);
         $posts = Posts::all();
         $banner = Banner::all();

@@ -15,4 +15,8 @@ class Posts extends Model
         'image',
         'upload'
     ];
+    public function scopeSearch($query, $value)
+    {
+        $query->where('title', 'like', "%{$value}%")->orwhere('description', 'like', "%{$value}%");
+    }
 }

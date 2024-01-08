@@ -26,7 +26,6 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create');
     }
 
     /**
@@ -37,8 +36,7 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        Categories::create($request->all());
-        return redirect()->route("listCategory")->with("success", "Thêm danh mục thành công ");
+        
     }
 
     /**
@@ -60,8 +58,6 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        $data = Categories::find($id);
-        return view('admin.category.update', compact('data'));
     }
 
     /**
@@ -73,9 +69,7 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category = Categories::find($id);
-        $category->update($request->all());
-        return redirect()->route('listCategory')->with("success", 'sửa danh mục thành công');
+       
     }
 
     /**
@@ -86,10 +80,6 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        $category = Categories::find($id);
-        if ($category) {
-            $category->delete();
-            return redirect()->route('listCategory')->with('success', 'xóa danh mục thành công!');
-        }
+       
     }
 }

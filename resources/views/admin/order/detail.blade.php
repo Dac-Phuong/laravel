@@ -3,7 +3,7 @@
     $ship = 30000;
 @endphp
 @section('main')
-    <section class="content">
+    <section class="content container-xxl flex-grow-1 container-p-y">
         <!-- Info boxes -->
         <div class="row">
             <div class="col-md-12">
@@ -43,7 +43,6 @@
                                                     </tr>
                                                 @endif
                                             @endforeach
-
                                             <tr>
                                                 <td colspan="6" class="text-right"
                                                     style="border: none; font-size: 1.1em;">Tổng cộng:
@@ -64,9 +63,9 @@
 
                                             <tr>
                                                 <td class="text-right" colspan="6">
-                                                    <a class="btn btn-primary btn-md" role="button"
+                                                    <a class="btn btn-primary btn-md text-white" role="button"
                                                         onclick="window.print()">
-                                                        <span class="glyphicon glyphicon-print"></span> In đơn hàng
+                                                        <span class="glyphicon glyphicon-print text-white"></span> In đơn hàng
                                                     </a>
                                                 </td>
                                             </tr>

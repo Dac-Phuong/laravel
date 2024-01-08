@@ -37,22 +37,6 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(
-            [
-                'name' => 'required',
-                'price' => 'required',
-                'category_id' => 'required',
-                'status' => 'required',
-                'description' => 'required',
-            ],
-            [
-                'name.required' => 'Bạn chưa nhập tên sản phẩm',
-                'price.required' => 'Bạn chưa nhập giá sản phẩm',
-                'category_id.required' => 'Trường này không được để trống',
-                'status.required' => 'Trường này không được để trống',
-                'description.required' => 'Bạn chưa nhập mô tả sản phẩm',
-            ]
-        );
         if ($request->hasFile('upload')) {
             $originName = $request->file('upload')->getClientOriginalName();
             $fileName = pathinfo($originName, PATHINFO_FILENAME);
@@ -69,7 +53,7 @@ class PostController extends Controller
             $image->move(public_path('uploads'), $file_name);
         }
         $request->merge(['image' => $file_name]);
-        Posts::create($request->all());
+        
         return redirect()->route('listPosts')->with('success', 'Thêm sản phẩm thành công');
     }
 
@@ -119,8 +103,8 @@ class PostController extends Controller
             $ext = $request->file_upload->extension();
             $file_name = time() . '-' . 'product.' . $ext;
             $image->move(public_path('uploads'), $file_name);
+            $request->merge(['image' => $file_name]);
         }
-        $request->merge(['image' => $file_name]);
         $data = $request->all();
         $post = Posts::find($id);
         $post->update($data);

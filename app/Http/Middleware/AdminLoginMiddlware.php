@@ -20,14 +20,13 @@ class AdminLoginMiddlware
         if (Auth::check()) {
             if (Auth::user()->roles == 1) {
                 return $next($request);
-            }
-            if (Auth::user()->roles == 0) {
+            } else {
                 Auth::logout();
                 return redirect()->back()->with('error', 'bạn không có quyền đăng nhập vào trang quản lý');
             }
         } else {
             Auth::logout();
-            return redirect()->route('getLoginAdmin')->with('error', 'tài khoản người dùng hoặc mật khẩu của bạn không chính xác');
+            return redirect()->route('getLoginAdmin')->with('error', 'bạn không có quyền đăng nhập vào trang quản lý');
         }
     }
 }

@@ -13,4 +13,8 @@ class Banner extends Model
         'name',
         'image'
     ];
+    public function scopeSearch($query, $value)
+    {
+        $query->where('name', 'like', "%{$value}%");
+    }
 }

@@ -16,11 +16,14 @@ class Products extends Model
         'price',
         'sale',
         'price_sale',
-        'quantity',
         'description',
         'status',
         'category_id',
     ];
+    public function scopeSearch($query, $value)
+    {
+        $query->where('name', 'like', "%{$value}%")->orwhere('price', 'like', "%{$value}%");
+    }
     public function products()
     {
         return $this->hasMany(Categories::class, 'category_id');

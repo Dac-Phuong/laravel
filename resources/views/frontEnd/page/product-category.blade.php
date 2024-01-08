@@ -21,7 +21,7 @@
                         </div>
                         @endif
                         <a class="p-2" style="display: block;height: 70%;" href="{{route('productDetail',$item->id)}}">
-                            <img src="/uploads/{{$item->image}}" style="width: 100%; height: 100%;object-fit: contain"></a>
+                            <img src="{{ asset('storage/uploads/' . $item->image) }}" style="width: 100%; height: 100%;object-fit: contain"></a>
                         <div class="p-2 lt-product-group-info">
                             <h3 class="">{{$item->name}}</h3>
                             <div class="price-box">

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,7 +11,7 @@ class AuthController extends Controller
     {
         if (Auth::check()) {
             if (Auth::user()->roles == 1) {
-                return redirect()->route('getListUser');
+                return redirect()->route('home');
             }
             if (Auth::user()->roles == 0) {
                 return redirect()->back()->with('error', 'bạn không có quyền đăng nhập vào trang quản lý');
@@ -42,7 +41,7 @@ class AuthController extends Controller
         $email = $request->get('email');
         $password = $request->get('password');
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
-            return redirect()->route('getListUser');
+            return redirect()->route('home');
         }
         return redirect()->back()->with('error', 'Email hoặc mật khẩu không đúng');
     }
